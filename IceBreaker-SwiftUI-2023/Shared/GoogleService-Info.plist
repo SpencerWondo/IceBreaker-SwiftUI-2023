@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>726099250833-badq29e4f305msi9ssi1kie370ofu4pg.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.726099250833-badq29e4f305msi9ssi1kie370ofu4pg</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBq4-gSexX-scfpph8f0ziTX93xGt9ClmM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>726099250833</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>UNH-IOS.IceBreaker-SwiftUI-2023</string>
+	<key>PROJECT_ID</key>
+	<string>icebreaker-swiftui-2023-sw</string>
+	<key>STORAGE_BUCKET</key>
+	<string>icebreaker-swiftui-2023-sw.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:726099250833:ios:021e83a15c9f13d7793930</string>
+</dict>
+</plist>
