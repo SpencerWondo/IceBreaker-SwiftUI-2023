@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ContentView: View {
     
-    //let db = Firestore.firestore()
+    let db = Firestore.firestore()
     
     @State var txtFirstName: String = ""
     @State var txtLastName: String = ""
