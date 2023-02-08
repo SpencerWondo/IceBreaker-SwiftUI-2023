@@ -17,14 +17,14 @@ struct ContentView: View {
     @State var txtLastName: String = ""
     @State var txtPrefName: String = ""
     
-    @State var txtQuestion: String = "Test"
+    @State var txtQuestion: String = ""
     @State var txtAnswer: String = ""
     
     @State var questions = [Question]()
     
     var body: some View {
         VStack {
-            Text("Placeholder")
+            Text("IceBreaker")
                 .font(.system(size: 40))
                 .bold()
             Text("By: S. Wondolowski")
@@ -97,7 +97,24 @@ struct ContentView: View {
     }
     
     func sendAnswerToFirebase(){
-        txtQuestion = ""
+        let data = ["FirstName": txtFirstName,
+                    "LastName": txtLastName,
+                    "PrefName": txtPrefName,
+                    "Question": txtQuestion,
+                    "Answer": txtAnswer,
+                    "course": "ios-Spring-2023"]
+        as [String: Any]
+        
+        var ref: DocumentReference? = nil
+        ref = db.collection("students")
+            .addDocument(data: data) { err in
+                if let err = err{
+                    print("Error adding Documents: \(err)")
+                } else {
+                    print("Document added with Id: \(ref!.documentID)")
+                }
+            }
+        
     }
     
     
