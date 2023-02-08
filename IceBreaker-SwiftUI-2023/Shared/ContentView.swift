@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import FirebaseFirestore
 
 struct ContentView: View {
     
@@ -19,6 +20,8 @@ struct ContentView: View {
     @State var txtQuestion: String = "Test"
     @State var txtAnswer: String = ""
     
+    @State var questions = [Question]()
+    
     var body: some View {
         VStack {
             Text("Placeholder")
@@ -27,24 +30,21 @@ struct ContentView: View {
             Text("By: S. Wondolowski")
                 .padding(.bottom)
         
-            
-            
+                        
             TextField("First Name:", text: $txtFirstName)
             TextField("Last Name:", text: $txtLastName)
             TextField("Pref Name:", text: $txtPrefName)
             
-            
-            
+                        
             Button(action: setQuestion) {
                 Text("Get Question")
                     .padding(5)
-            }
-            .buttonStyle(.borderedProminent)
-            .buttonBorderShape(.roundedRectangle(radius: 20))
+            }.buttonStyle(.borderedProminent)
+                .buttonBorderShape(.roundedRectangle(radius: 20))
             
-            
-            
+        
             Text(txtQuestion)
+            
             TextField("Answer: ", text: $txtAnswer)
 
             
@@ -52,10 +52,8 @@ struct ContentView: View {
             Button(action: sendAnswerToFirebase) {
                 Text("Submit")
                     .padding(5)
-            }
-            .buttonStyle(.borderedProminent)
-            .buttonBorderShape(.roundedRectangle(radius: 20))
-            
+            }.buttonStyle(.borderedProminent)
+                .buttonBorderShape(.roundedRectangle(radius: 20))
             
             
         }
@@ -72,12 +70,30 @@ struct ContentView: View {
     }
     
     
-    func getQuestionsFromFirebase(){
-        
+    func getQuestionsFromFirebase(){ // fetches questions from firebase
+        db.collection("questions")
+            .getDocuments() { (querySnapshot,err) in
+                if let err = err{
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        print("Document Id Fetched: \(document.documentID)")
+                        print("\(document.data())")
+                        
+                        let question = Question(id: document.documentID, data: document.data())
+                        
+                        self.questions.append(question!)
+                    }
+                            
+                }
+                
+            }
     }
     
-    func setQuestion(){
-        txtQuestion = txtFirstName
+    func setQuestion(){ // Randomly pick a question from my questions array
+        txtQuestion = questions.randomElement()!.text
+        
+        //tracks previous question so next question is different
     }
     
     func sendAnswerToFirebase(){
