@@ -27,25 +27,36 @@ struct ContentView: View {
             Text("By: S. Wondolowski")
                 .padding(.bottom)
         
+            
+            
             TextField("First Name:", text: $txtFirstName)
-            
             TextField("Last Name:", text: $txtLastName)
-            
             TextField("Pref Name:", text: $txtPrefName)
+            
+            
             
             Button(action: setQuestion) {
                 Text("Get Question")
                     .padding(5)
             }
+            .buttonStyle(.borderedProminent)
+            .buttonBorderShape(.roundedRectangle(radius: 20))
+            
+            
             
             Text(txtQuestion)
-            
             TextField("Answer: ", text: $txtAnswer)
+
+            
             
             Button(action: sendAnswerToFirebase) {
                 Text("Submit")
                     .padding(5)
             }
+            .buttonStyle(.borderedProminent)
+            .buttonBorderShape(.roundedRectangle(radius: 20))
+            
+            
             
         }
         .multilineTextAlignment(.center)
